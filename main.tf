@@ -43,7 +43,7 @@ resource "aws_docdb_cluster" "main" {
   preferred_backup_window = var.preferred_backup_window
   skip_final_snapshot     = var.skip_final_snapshot
   db_subnet_group_name    = aws_docdb_subnet_group.main.name
-  vpc_security_group_ids = aws_security_group.main.id
+  vpc_security_group_ids = [aws_security_group.main.id]
   db_cluster_parameter_group_name = aws_docdb_cluster_parameter_group.main.name
   tags = merge(local.tags, { Name = "${local.name_prefix}-cluster"})
   engine_version = var.engine_version
