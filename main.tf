@@ -11,7 +11,7 @@ resource "aws_security_group" "main" {
   tags = merge(local.tags, {Name = "${local.name_prefix}-sg"})
 
   ingress {
-    description = "DOCDB"
+    description = var.engine_family
     from_port   = 27017
     to_port     = 27017
     protocol    = "tcp"
