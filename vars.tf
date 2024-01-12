@@ -7,3 +7,6 @@ variable "skip_final_snapshot" {}
 variable "vpc_id" {}
 variable "sg_ingress_cidr" {}
 variable "engine_version" {}
+variable "engine_family" {}
+variable "instance_count" {}
+variable "instance_class" {}

@@ -28,10 +28,10 @@ resource "aws_security_group" "main" {
 }
 
 resource "aws_docdb_cluster_parameter_group" "main" {
+  family      = var.engine_family
   name        = "${local.name_prefix}-pg"
   description = "${local.name_prefix}-pg"
   tags        = merge(local.tags, { Name = "${local.name_prefix}-pg" })
-
 }
 
 resource "aws_docdb_cluster" "main" {
@@ -49,4 +49,11 @@ resource "aws_docdb_cluster" "main" {
   engine_version                  = var.engine_version
   #storage_encrypted               = true
   #kms_key_id                      = var.kms_key_id
+}
+
+resource "aws_docdb_cluster_instance" "cluster_instances" {
+  count              = var.instance_count
+  identifier         = "${local.name_prefix}-cluster-instance-${count.index+1}"
+  cluster_identifier = aws_docdb_cluster.main.id
+  instance_class     = var.instance_class
 }
