@@ -10,3 +10,4 @@ variable "engine_version" {}
 variable "engine_family" {}
 variable "instance_class" {}
 variable "instance_count" {}
+variable "kms_key_id" {}
