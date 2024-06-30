@@ -8,8 +8,8 @@ resource "aws_docdb_subnet_group" "main" {
 resource "aws_docdb_cluster" "main" {
   cluster_identifier      = "${local.name_prefix}-cluster"
   engine                  = "docdb"
-  master_username         = "foo"
-  master_password         = "mustbeeightchars"
+  master_username         = data.aws_ssm_parameter.master_username.value
+  master_password         = data.aws_ssm_parameter.master_password.value
   backup_retention_period = 5
   preferred_backup_window = "07:00-09:00"
   skip_final_snapshot     = true
