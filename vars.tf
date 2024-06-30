@@ -7,3 +7,4 @@ variable "backup_retention_period" {}
 variable "vpc_id" {}
 variable "sg_ingress_cidr" {}
 variable "engine_version" {}
+variable "engine_family" {}
